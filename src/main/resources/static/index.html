@@ -41,7 +41,7 @@
         <th>Surname</th>
         <th>Gender</th>
         <th>Birthdate</th>
-        <th>Action</th> <!-- New column for Delete button -->
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -50,10 +50,10 @@
 </table>
 
 <script>
-    // Function to fetch and display all users
+    //fetch and display all users
     function fetchUsers() {
         $.get("/api/users", function(data) {
-            // Clear the existing rows
+            //clear the existing rows
             $("#usersTable tbody").empty();
 
             // Add each user to the table with a Delete button
@@ -72,7 +72,7 @@
                 );
             });
 
-            // Attach click event to the Delete buttons
+            //click event to the Delete buttons
             $(".deleteButton").click(function() {
                 var userId = $(this).data("id");
                 deleteUser(userId);
@@ -82,7 +82,7 @@
         });
     }
 
-    // Function to delete a user
+    //delete a user
     function deleteUser(userId) {
         if (confirm("Are you sure you want to delete this user?")) {
             $.ajax({
@@ -90,7 +90,7 @@
                 type: "DELETE",
                 success: function() {
                     alert("User deleted successfully!");
-                    fetchUsers(); // Refresh the user list
+                    fetchUsers(); //Refresh
                 },
                 error: function() {
                     alert("Error deleting user.");
@@ -99,7 +99,7 @@
         }
     }
 
-    // Function to add a new user
+    //add a new user
     $("#addButton").click(function() {
         var userData = {
             name: $("#name").val(),
@@ -124,7 +124,7 @@
         });
     });
 
-    // Fetch users when the page loads
+    //Fetch users upon page load
     $(document).ready(function() {
         fetchUsers();
     });

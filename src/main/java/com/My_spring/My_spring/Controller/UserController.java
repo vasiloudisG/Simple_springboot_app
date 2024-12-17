@@ -23,11 +23,11 @@ public class UserController {
     }
     @GetMapping("/api/users")
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userService.getAllUsers();
     }
 
     @DeleteMapping("/deleteUser/{id}")
     public void deleteUser(@PathVariable int id) {
-        userRepository.deleteById(id);
+        userService.deleteUserById(id);
     }
 }
